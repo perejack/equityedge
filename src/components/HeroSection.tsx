@@ -2,6 +2,16 @@ import { Button } from "@/components/ui/button";
 import heroBackground from "@/assets/hero-background.jpg";
 
 const HeroSection = () => {
+  const scrollToChallenges = () => {
+    const challengesSection = document.getElementById('challenges');
+    if (challengesSection) {
+      challengesSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <section className="min-h-screen pt-32 pb-20 relative overflow-hidden" style={{ 
       backgroundImage: `url(${heroBackground})`,
@@ -34,6 +44,7 @@ const HeroSection = () => {
               variant="default" 
               size="xl" 
               className="bg-primary text-white hover:bg-primary/90 px-8 py-4 text-lg font-semibold rounded-xl border-0"
+              onClick={scrollToChallenges}
             >
               Start Challenge
             </Button>
