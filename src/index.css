@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Equity Edge Trading Platform Design System
+All colors, gradients, fonts, etc defined here following their brand
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Brand Colors - Equity Edge Green Theme */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    /* Primary - Equity Edge Green */
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 142 84% 47%;
+
+    /* Dark Theme Colors */
+    --dark-bg: 160 100% 2%;
+    --dark-surface: 160 50% 6%;
+    --dark-border: 160 30% 15%;
+
+    /* Secondary Colors */
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 142 76% 36%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 142 76% 36%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 142 76% 36%;
+
+    /* Equity Edge Specific Variables */
+    --hero-bg: 160 100% 2%;
+    --stats-bg: 142 84% 47%;
+    --card-glow: 142 84% 47%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--dark-bg)), hsl(var(--dark-surface)));
+    --gradient-stats: linear-gradient(90deg, hsl(var(--primary-glow)), hsl(var(--primary)));
+    --gradient-card: linear-gradient(135deg, hsl(var(--card)), hsl(var(--muted)));
+
+    /* Shadows */
+    --shadow-card: 0 4px 6px -1px hsl(var(--primary) / 0.1);
+    --shadow-glow: 0 0 20px hsl(var(--primary-glow) / 0.3);
+    --shadow-hero: 0 25px 50px -12px hsl(var(--dark-bg) / 0.8);
+
+    /* Typography */
+    --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 160 100% 2%;
+    --foreground: 0 0% 98%;
+
+    --card: 160 50% 6%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 160 50% 6%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 142 84% 47%;
+    --primary-foreground: 160 100% 2%;
+
+    --secondary: 160 30% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 160 30% 15%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 142 84% 47%;
+    --accent-foreground: 160 100% 2%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 160 30% 15%;
+    --input: 160 30% 15%;
+    --ring: 142 84% 47%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+@layer utilities {
+  /* Equity Edge Specific Classes */
+  .hero-gradient {
+    background: var(--gradient-hero);
+    position: relative;
+  }
+
+  .hero-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 20% 50%, hsl(var(--primary-glow) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, hsl(var(--primary) / 0.1) 0%, transparent 50%);
+  }
+
+  .stats-gradient {
+    background: var(--gradient-stats);
+  }
+
+  .card-glow {
+    box-shadow: var(--shadow-card);
+    border: 1px solid hsl(var(--primary) / 0.2);
+  }
+
+  .card-glow:hover {
+    box-shadow: var(--shadow-glow);
+    border-color: hsl(var(--primary) / 0.4);
+    transform: translateY(-2px);
+    transition: var(--transition-smooth);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px hsl(var(--primary-glow) / 0.5);
+  }
+
+  .btn-glow {
+    box-shadow: 0 4px 14px 0 hsl(var(--primary) / 0.4);
+    transition: var(--transition-smooth);
+  }
+
+  .btn-glow:hover {
+    box-shadow: 0 6px 20px 0 hsl(var(--primary) / 0.6);
+    transform: translateY(-1px);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animated-bg {
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 20px hsl(var(--primary) / 0.3); }
+  to { box-shadow: 0 0 30px hsl(var(--primary-glow) / 0.6); }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
